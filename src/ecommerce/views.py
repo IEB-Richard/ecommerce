@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 
 from .forms import ContactForm, LoginForm, RegisterForm
 
+
 def home_page_old(request):
     return HttpResponse("<h1>Hello world!</h1>")
 
@@ -38,6 +39,7 @@ def contact_page(request):
 
     return render(request, 'contact_page.html', context)
 
+
 def login_page(request):
     form = LoginForm(request.POST or None)
     print(request.user.is_authenticated)
@@ -54,13 +56,16 @@ def login_page(request):
             # Redirect to a success page.
             # context['form'] = LoginForm()
             return redirect('/')
-            
+
         else:
             # Return an 'invalid login' error message.
-            print("Error in login")       
+            print("Error in login")
     return render(request, "auth/login.html", context)
 
+
 User = get_user_model()
+
+
 def register_page(request):
     form = RegisterForm(request.POST or None)
     context = {
@@ -72,4 +77,4 @@ def register_page(request):
         email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password')
         new_user = User.objects.create_user(username, email, password)
-    return render(request, "auth/register.html", context)    
+    return render(request, "auth/register.html", context)
