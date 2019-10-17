@@ -3,5 +3,8 @@
 {% block content %}
     {{ object.title }} <br>
     {{ object.description }}<br>
-    {{ object.price }}
+    {{ object.price }} <br>
+    {% if object.image %}
+        <img src="{{ object.image.url }}" class="img-fluid" />
+    {% endif %}
 {% endblock content %}
