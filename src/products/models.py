@@ -22,10 +22,27 @@ def upload_image_path(instance, filename):
     )
 
 
+class ProductQuerySet(models.query.QuerySet):
+    def active(self):
+        return self.filter(active=True)    
+    def featured(self):
+        return self.filter(featured=True)
+
+
 class ProductManager(models.Manager):
     """
     Product Model Manager
     """
+
+    def get_queryset(self):
+        return ProductQuerySet(self.model, using=self._db)
+
+    def all(self):
+        return self.get_queryset().active()
+
+    def featured(self):
+        # with this method defined, so as that you can call Product.objects.featured()
+        return self.get_queryset().featured()
 
     def get_by_id(self, id):
         # Please note: here the self.get_queryset equals to Product.objects
@@ -41,6 +58,8 @@ class Product(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
     image = models.ImageField(
         upload_to=upload_image_path, null=True, blank=True)
+    featured = models.BooleanField(default=False)
+    active = models.BooleanField(default=False)
 
     objects = ProductManager()
 
