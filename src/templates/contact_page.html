@@ -1,15 +1,21 @@
 {% extends "base.html" %} 
 {% block content %}
-<div class="row">
-  <div class="col">
-    <p>{{ content }}</p>
-    <div class="col-sm-6 col-12">
-      <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
-      </form>
+  {% include "base/navbar.html" with brand_name=brand %}
+  <div class="text-center">
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>{{ content }}</p>
+        <div class="col-sm-6 col-12">
+          <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 {% endblock content %}
