@@ -28,8 +28,9 @@ from .views import (
     # ProductFeaturedDetailView
 )
 # from .views import home_page, about_page, contact_page, login_page, register_page
+app_name = "products"
 urlpatterns = [
     path('', ProductListView.as_view()),
     path('<int:pk>/', ProductDetailView.as_view()),
-    path('<slug:slug>/', ProductDetailSlugView.as_view()),
+    path('<slug:slug>/', ProductDetailSlugView.as_view(), name="detail"),
 ]
