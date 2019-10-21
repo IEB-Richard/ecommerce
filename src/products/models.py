@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from .utils import unique_slug_generator
 
+
 def get_filename_ext(filepath):
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
@@ -27,7 +28,8 @@ def upload_image_path(instance, filename):
 
 class ProductQuerySet(models.query.QuerySet):
     def active(self):
-        return self.filter(active=True)    
+        return self.filter(active=True)
+
     def featured(self):
         return self.filter(featured=True)
 
@@ -64,13 +66,13 @@ class Product(models.Model):
         upload_to=upload_image_path, null=True, blank=True)
     featured = models.BooleanField(default=False)
     active = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     objects = ProductManager()
 
     def get_absolute_url(self):
         # return "/products/{slug}".format(slug=self.slug)
-        return reverse("products:detail", kwargs={"slug":self.slug})
-    
+        return reverse("products:detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title
@@ -78,8 +80,10 @@ class Product(models.Model):
     def __unicode__(self):
         return self.title
 
+
 def product_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
+
 
 pre_save.connect(product_pre_save_receiver, sender=Product)
