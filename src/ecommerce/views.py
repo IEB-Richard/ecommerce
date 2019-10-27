@@ -10,6 +10,9 @@ def home_page_old(request):
 
 
 def home_page(request):
+    # *** get the data from session, the data was set from cart view.
+    # first_name = request.session.get('first_name')
+    # print(first_name)
     context = {
         "title": "Hello world!",
         "content": "Welcome to home page.",
