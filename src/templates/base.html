@@ -11,9 +11,11 @@
   </head>
   <body>
     {% include "base/navbar.html" with brand_name="eCommerce" %}
-    {% block content %}
-      your contents goes here
-    {% endblock content %}
+    <div class="container">
+      {% block content %}
+        your contents goes here
+      {% endblock content %}
+    </div>
     {% include "base/js.html" %}
   </body>
 </html>

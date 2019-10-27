@@ -18,6 +18,8 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+
 # from products.views import (
 #     ProductListView,
 #     product_list_view,
@@ -34,7 +36,9 @@ urlpatterns = [
     path('contact/', contact_page, name="contact"),
     path('login/', login_page, name="login"),
     path('products/', include("products.urls")),
+    path('search/', include("search.urls")),
     path('register/', register_page, name="register"),
+    path('bootstrap/', TemplateView.as_view(template_name="bootstrap/example.html")),
     # path('featured/', ProductFeaturedListView.as_view()),
     # path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),
     # path('products/', ProductListView.as_view()),

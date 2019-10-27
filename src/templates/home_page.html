@@ -1,21 +1,19 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block content %}
-    <div class="text-center">
-      <h1>{{ title }}</h1>
+  <div class="text-center">
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>{{ content }}</p>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <p>{{ content }}</p>
-        </div>
-      </div>
-      {% if request.user.is_authenticated %}
-      <div class="row">
-        <div class="col">
-          <h1>Premium</h1>
-          <p>{{ premium_content }}</p>
-        </div>
-      </div>
-      {% endif %}
+  </div>
+  {% if request.user.is_authenticated %}
+  <div class="row">
+    <div class="col">
+      <h1>Premium</h1>
+      <p>{{ premium_content }}</p>
     </div>
+  </div>
+  {% endif %}
 {% endblock content %}

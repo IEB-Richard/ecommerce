@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # developed apps
     'products.apps.ProductsConfig',
+    'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [

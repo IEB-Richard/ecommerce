@@ -1,4 +1,4 @@
-"""products URL Configuration
+"""search URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -19,18 +19,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from .views import (
-    ProductListView,
-    # product_list_view,
-    ProductDetailView,
-    ProductDetailSlugView,
-    # product_detail_view,
-    # ProductFeaturedListView,
-    # ProductFeaturedDetailView
+    SearchProductView
 )
-# from .views import home_page, about_page, contact_page, login_page, register_page
-app_name = "products"
+app_name = "search"
 urlpatterns = [
-    path('', ProductListView.as_view(), name="list"),
-    path('<int:pk>/', ProductDetailView.as_view()),
-    path('<slug:slug>/', ProductDetailSlugView.as_view(), name="detail"),
+    path('', SearchProductView.as_view())
 ]
