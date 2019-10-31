@@ -7,7 +7,6 @@ from django.urls import reverse
 
 from .utils import unique_slug_generator
 
-
 def get_filename_ext(filepath):
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
@@ -91,6 +90,10 @@ class Product(models.Model):
         return self.title
 
     def __unicode__(self):
+        return self.title
+
+    @property
+    def name(self):
         return self.title
 
 
