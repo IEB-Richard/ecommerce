@@ -11,7 +11,6 @@ def login_page(request):
     context = {
         'form': form
     }
-
     print("User logged in")
     next_ = request.GET.get('next')
     next_post = request.POST.get('next')
@@ -28,7 +27,6 @@ def login_page(request):
                 return redirect(redirect_path)
             else:
                 return redirect('/')
-
         else:
             # Return an 'invalid login' error message.
             print("Error in login")
