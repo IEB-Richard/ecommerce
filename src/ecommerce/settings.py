@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # developed apps
     'accounts.apps.AccountsConfig',
+    'addresses.apps.AddressesConfig',
     'billing.apps.BillingConfig',
     'products.apps.ProductsConfig',
     'search.apps.SearchConfig',

@@ -8,7 +8,6 @@ from .models import GuestEmail
 # Create your views here.
 def guest_register_view(request):
     form = GuestForm(request.POST or None)
-    print(request.user.is_authenticated)
     context = {
         'form': form
     }
