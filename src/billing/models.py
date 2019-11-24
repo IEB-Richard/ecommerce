@@ -19,6 +19,10 @@ class BillingProfileManager(models.Manager):
         if user.is_authenticated:
             obj, created = self.model.objects.get_or_create(
                 user=user, email=user.email)
+            if created:
+                print("billing profile was created!")
+            else:
+                print("billing profile was retrieved!")
         elif guest_email_id is not None:
             guest_email_obj = GuestEmail.objects.get(id=guest_email_id)
             obj, created = self.model.objects.get_or_create(
